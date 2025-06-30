@@ -1,0 +1,37 @@
+.event-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.event-poster {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.event-title {
+  font-size: 2em;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.event-description {
+  margin-top: 20px;
+  line-height: 1.6;
+  font-size: 1em;
+}

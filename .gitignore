@@ -1,0 +1,17 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+.env
+
+template.yaml
+.aws-sam
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+# Ignore all folders in src/shared/python except utils
+src/shared/python/*
+!src/shared/python/utils/
+src/__pycache__/*

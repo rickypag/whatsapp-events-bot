@@ -1,0 +1,38 @@
+{
+  "name": "create-events-bot",
+  "version": "0.1.0",
+  "main": "index.js",
+  "bin": {
+    "create-events-bot": "bin/create-events-bot.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "logs": "serverless logs -f router -t",
+    "invoke:router": "serverless invoke local -f router",
+    "invoke:create": "serverless invoke local -f create",
+    "invoke:list": "serverless invoke local -f list",
+    "dynamodb:install": "serverless dynamodb install",
+    "dynamodb:start": "serverless dynamodb start",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "setup:manual": "scripts\\setup-dynamodb.bat",
+    "start:manual-db": "scripts\\start-dynamodb.bat",
+    "start:s3": "docker run -d --rm -it -p 4566:4566 -p 4571:4571 localstack/localstack",
+    "start:dynamo": "docker run -d -p 8000:8000 --name dynamodb-local amazon/dynamodb-local"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.9",
+    "aws-cdk": "2.1019.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.6.3"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.204.0",
+    "@aws-cdk/aws-lambda": "^1.204.0",
+    "aws-cdk-lib": "2.201.0",
+    "constructs": "^10.0.0"
+  }
+}
