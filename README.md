@@ -18,8 +18,6 @@ This is why I developed a WhatsApp bot with this exact purpose: enable users to 
 
 The main functionalities are event creation, display, sharing and deleting. As all features are enabled by the AWS Lambda, together with other platforms such as S3 and Dynamo DB, this hackathon also further proves how the AWS ecosystem can be used to create practical solutions to everyday issues.
 
-Of course, it would be very easy to extend this bot for other messaging platforms (e.g., Telegram).
-
 ## Architecture Overview
 
 The application follows a serverless microservices architecture using AWS Lambda functions:
