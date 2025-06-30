@@ -16,13 +16,6 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     try:
         event_body = urllib.parse.parse_qs(event['body'])
 
-        # The body of the event should we:
-        # {
-        #   "From": "whatsapp:+1234567890",
-        #   "Body": "Message sent by the user",
-        # }
-        # logger.info(f"Processing message: {json.dumps(event_body, indent=2)}")
-
         # Extract phone number and message from the body
         phone_number = event_body.get('From', [None])[0]
         # Check also is phone number is in the format "whatsapp:+1234567890"

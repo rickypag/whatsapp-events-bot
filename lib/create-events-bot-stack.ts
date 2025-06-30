@@ -8,7 +8,6 @@ import path from 'path';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import { createCloudFrontElements } from './cloudfront-elements';
 import { generateTwilioCredentials } from './twilio-setup';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 
 export class CreateEventsBotStack extends cdk.Stack {
@@ -51,20 +50,7 @@ export class CreateEventsBotStack extends cdk.Stack {
       compatibleRuntimes: [lambda.Runtime.PYTHON_3_11],
       description: 'Shared utils for all lambdas',
     });
-
-    // eventsTable.addGlobalSecondaryIndex({
-    //   indexName: 'UserPhoneNameIndex',
-    //   partitionKey: {
-    //     name: 'userPhone',
-    //     type: dynamodb.AttributeType.STRING
-    //   },
-    //   sortKey: {
-    //     name: 'name',
-    //     type: dynamodb.AttributeType.STRING
-    //   },
-    //   projectionType: dynamodb.ProjectionType.ALL
-    // });
-
+    
     const createEventLambda = new lambda.Function(this, 'CreateEventLambda', {
       runtime: lambda.Runtime.PYTHON_3_11,
       handler: 'handler.handler',
@@ -179,7 +165,6 @@ export class CreateEventsBotStack extends cdk.Stack {
     // POST endpoint for twilio messages
     const messages = api.root.addResource('messages');
     messages.addMethod('POST', new apigateway.LambdaIntegration(RouterLambda));
-
 
     // GET endpoint for the react app
     const eventResource = api.root.addResource("event");
