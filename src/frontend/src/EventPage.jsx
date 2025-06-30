@@ -37,7 +37,7 @@ const EventPage = () => {
     return (
       <div className="event-container">
         <img
-          src={data["image_url"]} // https://fastly.picsum.photos/id/237/500/600.jpg?hmac=lGGv-UUaA8_K5xRoWLrKJXCHxtCW-BQl2f7PpS6TsSE"
+          src={data["image_url"]}
           alt="Event Poster"
           className="event-poster"
         />

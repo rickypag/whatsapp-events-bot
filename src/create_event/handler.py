@@ -33,43 +33,12 @@ def handler(event, context):
 
     event_id = str(uuid.uuid4())
 
-    # image_url = "https://fastly.picsum.photos/id/815/200/200.jpg?hmac=7zFtysk327pj5h65VOYejVs4MTbaHLX4cvGw1UL2A88"
-
     # 1. We get image from the URL
     s3_key = None
     if media_url:
         image_data = BytesIO(download_image_from_twilio(media_url))
         s3_key = f"event_{event_id}.jpg"
         s3.upload_fileobj(image_data, EVENT_POSTERS_S3_BUCKET, s3_key)
-
-    # 2. We analyze the image using bedrock
-    # event_data = process_image()
-
-        # 2. We upload the image to S3
-        # s3 = boto3.client(
-        #     's3',
-        #     endpoint_url='http://host.docker.internal:4566',  # LocalStack default endpoint
-        #     aws_access_key_id='test',
-        #     aws_secret_access_key='test',
-        #     region_name='us-east-1'
-        # )
-
-
-    # try:
-    #     existing_buckets = s3.list_buckets()
-    #     if not any(b['Name'] == EVENT_POSTERS_S3_BUCKET for b in existing_buckets.get('Buckets', [])):
-    #         s3.create_bucket(
-    #             Bucket=EVENT_POSTERS_S3_BUCKET,
-    #             CreateBucketConfiguration={
-    #                 "LocationConstraint": REGION
-    #             }
-    #         )
-    #     s3.upload_fileobj(image_data, EVENT_POSTERS_S3_BUCKET, s3_key)
-    #     # print(f"Image uploaded to s3://test/{s3_key}")
-    # except NoCredentialsError:
-    #     print("AWS credentials not found.")
-
-
 
     event_item = process_event(event_body.get('Body', [None])[0])
     event_item["id"] = event_id
@@ -97,26 +66,9 @@ def download_image_from_twilio(media_url):
     response = requests.get(media_url, auth=(account_sid, auth_token))
     response.raise_for_status()
     
-    # Optionally save to file or upload to S3
     return response.content  # this is binary image data
 
-
-def process_image():
-    """
-    Process an image from the event and return a metadata.
-    """
-    # Placeholder for image processing logic
-    print("Processing image...")
-
-    return {
-        "name": "event_name",
-        "image_url": "https://example.com/image.jpg",
-        "description": "This is a sample event description.",
-        "date": "2023-10-01T10:00:00Z",
-        "address": "Sample Location",
-    }
-
-def process_event(event_data: str):
+def process_event(event_data):
     """
     Process the event data
     """

@@ -26,13 +26,7 @@ export const createCloudFrontElements = (stack: cdk.Stack) => {
       defaultBehavior: {
         origin: origins.S3BucketOrigin.withOriginAccessControl(websiteBucket, {
           originAccessControl,
-        }),
-        // edgeLambdas: [
-        //   {
-        //     functionVersion: edgeFunction.currentVersion,
-        //     eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
-        //   },
-        // ],
+        })
       },
       defaultRootObject: 'index.html',
       errorResponses: [
@@ -51,7 +45,7 @@ export const createCloudFrontElements = (stack: cdk.Stack) => {
 
     // Deploy React app build files to S3
     new s3deploy.BucketDeployment(stack, 'ReactAppDeployment', {
-      sources: [s3deploy.Source.asset(path.join(__dirname, '../src/frontend/dist'))], // Path to your React build folder
+      sources: [s3deploy.Source.asset(path.join(__dirname, '../src/frontend/dist'))],
       destinationBucket: websiteBucket,
       distribution,
       distributionPaths: ['/*'],

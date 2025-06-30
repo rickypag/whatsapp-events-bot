@@ -45,7 +45,6 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             Payload=json.dumps(event).encode('utf-8')
         )
 
-        # result = json.loads(response['Payload'].read())
         return create_response(200, "Lamdba invoked successfully")
     except Exception as e:
         logger.error(f"Error in router: {str(e)}")

@@ -8,18 +8,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
     "cdk": "cdk",
-    "logs": "serverless logs -f router -t",
-    "invoke:router": "serverless invoke local -f router",
-    "invoke:create": "serverless invoke local -f create",
-    "invoke:list": "serverless invoke local -f list",
-    "dynamodb:install": "serverless dynamodb install",
-    "dynamodb:start": "serverless dynamodb start",
-    "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down",
-    "setup:manual": "scripts\\setup-dynamodb.bat",
-    "start:manual-db": "scripts\\start-dynamodb.bat",
     "start:s3": "docker run -d --rm -it -p 4566:4566 -p 4571:4571 localstack/localstack",
     "start:dynamo": "docker run -d -p 8000:8000 --name dynamodb-local amazon/dynamodb-local"
   },

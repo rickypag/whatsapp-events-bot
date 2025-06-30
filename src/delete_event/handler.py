@@ -12,11 +12,6 @@ REGION = os.environ.get("AWS_REGION", "us-east-1")
 dynamodb = boto3.resource("dynamodb", endpoint_url=os.environ.get("DYNAMO_ENDPOINT"))
 table = dynamodb.Table(os.environ.get("EVENTS_TABLE_NAME"))
 
-
-# {
-#   "body": "From=whatsapp:+393473843886&Body=Delete: Partyyy"
-# }
-
 def handler(event, context):
     event_body = urllib.parse.parse_qs(event['body'])
     from_number = event_body.get('From', [None])[0]

@@ -128,9 +128,6 @@ export class CreateEventsBotStack extends cdk.Stack {
     eventsTable.grant(createEventLambda, 'dynamodb:Scan', 'dynamodb:PutItem');
     eventsTable.grant(myEventsLambda, 'dynamodb:Scan');
     eventsTable.grant(deleteEventLambda, 'dynamodb:Scan', 'dynamodb:DeleteItem');
-    // bucket.grantPut(createEventLambda);
-    // eventsTable.grantReadWriteData(createEventLambda);
-
 
     /**
      * Add shared layer to the Lambda functions (all need twilio shared function)
@@ -170,44 +167,5 @@ export class CreateEventsBotStack extends cdk.Stack {
     const eventResource = api.root.addResource("event");
     const eventIDResource = eventResource.addResource("{id}");
     eventIDResource.addMethod('GET', new apigateway.LambdaIntegration(getEventLambda));
-
-    // const edgeRole = new iam.Role(this, 'EdgeFunctionRole', {
-    //   assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
-    //   managedPolicies: [
-    //     iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'),
-    //   ],
-    // });
-    // eventsTable.grantReadData(edgeRole);
-
-    // Lambda@Edge function for origin request
-    // const edgeFunction = new cloudfront.experimental.EdgeFunction(this, 'EdgeFunction', {
-    //   runtime: lambda.Runtime.PYTHON_3_11,
-    //   handler: 'handler.handler',
-    //   code: lambda.Code.fromAsset(path.join(__dirname, '../src/edge')),
-    //   timeout: cdk.Duration.seconds(5),
-    //   memorySize: 128,
-    //   role: edgeRole,
-    // });
-
-    
-    // eventsTable.grant(edgeFunction, 'dynamodb:GetItem');
-
-    // Origin Access Control for CloudFront
-
-    // Output the CloudFront URL
-    // new cdk.CfnOutput(this, 'CloudFrontURL', {
-    //   value: distribution.distributionDomainName,
-    //   description: 'CloudFront Distribution URL',
-    // });
-
-    // new cdk.CfnOutput(this, 'S3BucketName', {
-    //   value: websiteBucket.bucketName,
-    //   description: 'S3 Bucket Name',
-    // });
-
-    // new cdk.CfnOutput(this, 'TableName', {
-    //   value: eventsTable.tableName,
-    //   description: 'DynamoDB Table Name',
-    // });
   }
 }

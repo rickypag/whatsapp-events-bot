@@ -11,11 +11,14 @@
 
 ## Introduction
 
-The idea behind this project is to create a WhatsApp bot that allows users to create events and share them with their friends. In my experience, it is pretty common for people to share the events they want to go to with their friends. Therefore, a WhatsApp bot is a good idea because it allows them to avoid using external websites (in the country I'm from, WhatsApp is the main means of communication).
+This project answers to one of our daily needs - to connect with one another. More precisely, meet each other and interact at events that speak to us!
+In my experience, most people share events they want to go to with their friends in WhatsApp groups. These events are then lost in the conversation history, easy to miss out on.
+
+This is why I developed a WhatsApp bot with this exact purpose: enable users to create events and share them with their peers, in an easy and convenient way. The social media choice - WhatsApp - is due to it being the main means of communication. Nevertheless, the project is adaptable to other messaging platforms, such as Telegram.
+
+The main functionalities are event creation, display, sharing and deleting. As all features are enabled by the AWS Lambda, together with other platforms such as S3 and Dynamo DB, this hackathon also further proves how the AWS ecosystem can be used to create practical solutions to everyday issues.
 
 Of course, it would be very easy to extend this bot for other messaging platforms (e.g., Telegram).
-
-I would have loved to include more features, however I did this project alone in my free time and therefore I didn't have the time to do everything that I wanted. Nonetheless, it was a very good opportunity to learn a lot about Lambda and serverless architecture.
 
 ## Architecture Overview
 
@@ -98,7 +101,7 @@ The bot uses 4 core Lambda functions plus 1 additional function for the web inte
 
 ## Future Enhancements
 
-I would have loved to include more features, but unfortunately I didn't have enough time
+Considering the extendibility of the code, I have some features planned
 
 ### Planned Features
 - **Amazon Bedrock Integration**: Automatic event information extraction from images using AI
